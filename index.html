@@ -3,165 +3,237 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071426">
-<title>ElectraPulse AI | Election Operations Intelligence</title>
+<title>ElectraPulse AI | Intelligence Platform</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#071426;color:#edf4ff;font-family:Arial,sans-serif}
-header{padding:20px 5%;background:#0d2038;border-bottom:1px solid #233a55;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.brand{font-size:22px;font-weight:bold;color:#53e2c1}
+header{background:#10243d;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #29445e}
+.brand{font-size:23px;font-weight:bold;color:#53e2c1}
 .brand span{color:white}
-.tag{font-size:11px;color:#f6c66a;border:1px solid #8c7138;padding:7px 10px;border-radius:20px}
-main{max-width:1150px;margin:auto;padding:25px 18px}
-h1{font-size:29px;margin-bottom:8px}
-.sub{color:#9eb1c9;line-height:1.6}
-.notice{background:#332b18;color:#f5d58c;border:1px solid #77602b;padding:12px;border-radius:9px;font-size:12px;line-height:1.6;margin:20px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px;margin:20px 0}
-.card{background:#10243d;border:1px solid #233d5b;border-radius:12px;padding:17px}
-.metric{font-size:28px;font-weight:bold;color:#53e2c1;margin:10px 0}
-.small{font-size:12px;color:#9eb1c9}
-h2{font-size:19px;margin:28px 0 14px}
-.map{background:#10243d;border:1px solid #29445e;border-radius:13px;padding:17px}
-.mapgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}
-.ward{padding:15px 5px;text-align:center;background:#173653;border-radius:9px;font-size:12px}
-.dot{display:block;margin:8px auto;width:11px;height:11px;border-radius:50%;background:#e5ad47}
-.high{background:#ed6969}.low{background:#53e2c1}
-.badge{font-size:10px;padding:5px 8px;border-radius:15px;background:#44351e;color:#f6ce77}
-.alert{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:9px 0;padding:13px;background:#10243d;border-radius:9px;border:1px solid #233d5b;font-size:13px}
-button{background:#38cba9;color:#071c29;border:0;padding:12px 17px;border-radius:8px;font-weight:bold;cursor:pointer}
-button:hover{opacity:.85}
-input,select,textarea{width:100%;padding:12px;margin:7px 0 14px;background:#091a2d;color:white;border:1px solid #35516c;border-radius:8px}
-label{font-size:13px;color:#c5d6e9}
-.panel{background:#10243d;padding:20px;border:1px solid #29445e;border-radius:12px;margin-top:15px}
-.result{color:#53e2c1;line-height:1.7;margin-top:12px}
-footer{text-align:center;padding:30px;color:#849bb4;font-size:12px}
-@media(max-width:500px){h1{font-size:24px}.mapgrid{grid-template-columns:repeat(2,1fr)}}
+main{max-width:1100px;margin:auto;padding:24px 17px}
+h1{font-size:29px}
+h2{font-size:19px;margin-top:30px}
+p{line-height:1.6}
+.muted{color:#9eb1c9;font-size:13px}
+.notice{padding:13px;background:#332b18;color:#f6d58e;border:1px solid #77602b;border-radius:9px;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin:20px 0}
+.card,.panel{background:#10243d;border:1px solid #29445e;border-radius:12px;padding:17px}
+.number{font-size:28px;color:#53e2c1;font-weight:bold;margin:10px 0}
+button,select,input,textarea{font:inherit;border-radius:8px}
+button{background:#42d3ae;color:#071426;border:0;padding:12px 17px;font-weight:bold;cursor:pointer}
+button.secondary{background:#203b58;color:white;border:1px solid #45617c}
+select,input,textarea{width:100%;padding:12px;margin:7px 0 14px;background:#091a2d;color:white;border:1px solid #45617c}
+label{font-size:13px;color:#c9d9e9}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.wardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:16px}
+.ward{background:#183652;border-radius:9px;padding:15px 5px;text-align:center;font-size:12px}
+.dot{width:10px;height:10px;border-radius:50%;display:block;margin:8px auto}
+.red{background:#f16b6b}.yellow{background:#e8bb55}.green{background:#53d9a9}
+.pill{font-size:10px;border-radius:20px;padding:5px 9px;background:#44351e;color:#f5d58b}
+.alert{background:#142b44;border:1px solid #29445e;padding:13px;border-radius:9px;margin:9px 0;font-size:13px}
+.result{background:#102b3e;border-left:3px solid #53e2c1;padding:14px;margin-top:13px;border-radius:5px;line-height:1.7}
+.bar{height:9px;background:#29445e;border-radius:9px;overflow:hidden;margin:12px 0}
+.fill{height:100%;background:#53d9a9;width:0%}
+footer{text-align:center;padding:30px;color:#8ca2bb;font-size:12px}
+@media(max-width:500px){h1{font-size:24px}.wardgrid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
+
 <header>
 <div class="brand">⚡ Electra<span>Pulse AI</span></div>
-<div class="tag">NONPARTISAN • HUMAN-REVIEWED</div>
+<select id="lang" style="width:125px;margin:0" onchange="translatePage()">
+<option value="en">English</option>
+<option value="ha">Hausa</option>
+<option value="pg">Pidgin</option>
+</select>
 </header>
 
 <main>
-<p class="small">ELECTORAL INTELLIGENCE PLATFORM</p>
-<h1>Election Operations Dashboard</h1>
-<p class="sub">See operational risks earlier. Support field observers. Improve election preparedness through explainable AI.</p>
+<p class="muted">ELECTORAL INTELLIGENCE • NORTH-EAST NIGERIA</p>
+<h1 id="heading">Election Operations Intelligence</h1>
+<p class="muted" id="intro">Early warning. Better preparation. Safer and more informed election operations.</p>
 
 <div class="notice">
-<strong>DEMO MODE:</strong> This prototype uses illustrative synthetic data. It is not connected to live INEC systems, real-time satellite imagery, weather feeds or WhatsApp. No real polling-unit conditions are being reported.
+<strong>PROTOTYPE / DEMO MODE:</strong> All figures, ward names, risk scores and reports below are synthetic examples. No live INEC, satellite, weather or observer data is connected.
 </div>
 
 <div class="grid">
-<div class="card"><div class="small">Wards monitored</div><div class="metric">24</div><div class="small">Illustrative dataset</div></div>
-<div class="card"><div class="small">Risk alerts</div><div class="metric">08</div><div class="small">Sample alerts</div></div>
-<div class="card"><div class="small">Reports received</div><div class="metric">36</div><div class="small">Demo reports</div></div>
-<div class="card"><div class="small">Awaiting review</div><div class="metric">05</div><div class="small">Human verification</div></div>
+<div class="card"><div class="muted">Sample wards</div><div class="number">24</div><div class="muted">Illustrative monitoring</div></div>
+<div class="card"><div class="muted">Sample risk alerts</div><div class="number">08</div><div class="muted">Not live incidents</div></div>
+<div class="card"><div class="muted">Sample reports</div><div class="number">36</div><div class="muted">Demonstration records</div></div>
+<div class="card"><div class="muted">Pending review</div><div class="number">05</div><div class="muted">Human oversight</div></div>
 </div>
 
-<h2>01 / Climate & Access Risk Map</h2>
-<div class="map">
-<strong>Illustrative Ward Monitoring</strong>
-<p class="small">Sample locations — not verified geographical or polling-unit data.</p>
-<div class="mapgrid">
-<div class="ward"><span class="dot high"></span>Ward A<br><span class="badge">High risk</span></div>
-<div class="ward"><span class="dot"></span>Ward B<br><span class="badge">Medium risk</span></div>
-<div class="ward"><span class="dot low"></span>Ward C<br><span class="badge">Low risk</span></div>
-<div class="ward"><span class="dot high"></span>Ward D<br><span class="badge">High risk</span></div>
-<div class="ward"><span class="dot low"></span>Ward E<br><span class="badge">Low risk</span></div>
-<div class="ward"><span class="dot"></span>Ward F<br><span class="badge">Medium risk</span></div>
-</div>
-<p class="small">Risk indicators are illustrative and require independent field confirmation.</p>
-</div>
-
-<h2>02 / Operational Risk Alerts</h2>
-<div class="alert"><div><strong>Ward A — Access concern</strong><br><span class="small">Illustrative flood-related road disruption</span></div><span class="badge">HIGH</span></div>
-<div class="alert"><div><strong>Ward B — Weather concern</strong><br><span class="small">Illustrative heavy rainfall scenario</span></div><span class="badge">MEDIUM</span></div>
-<div class="alert"><div><strong>Ward D — Road concern</strong><br><span class="small">Illustrative accessibility warning</span></div><span class="badge">HIGH</span></div>
-
-<h2>03 / Multilingual Observer Reporting</h2>
+<h2>01. Climate & Access Risk Map</h2>
 <div class="panel">
-<p class="small">Submit a sample field incident report.</p>
-<label>Preferred language</label>
-<select id="language">
+<strong>Gombe State — Illustrative monitoring view</strong>
+<p class="muted">Sample ward labels only. This is not a geographical map or verified polling-unit dataset.</p>
+<div class="wardgrid">
+<div class="ward"><span class="dot red"></span>Ward A<br><span class="pill">High risk</span></div>
+<div class="ward"><span class="dot yellow"></span>Ward B<br><span class="pill">Medium risk</span></div>
+<div class="ward"><span class="dot green"></span>Ward C<br><span class="pill">Low risk</span></div>
+<div class="ward"><span class="dot red"></span>Ward D<br><span class="pill">High risk</span></div>
+<div class="ward"><span class="dot green"></span>Ward E<br><span class="pill">Low risk</span></div>
+<div class="ward"><span class="dot yellow"></span>Ward F<br><span class="pill">Medium risk</span></div>
+</div>
+</div>
+
+<h2>02. AI Risk Analysis Demonstration</h2>
+<div class="panel">
+<p class="muted">Enter illustrative conditions to calculate a sample access-risk score.</p>
+<label>Rainfall severity</label>
+<select id="rain">
+<option value="10">Low</option>
+<option value="45">Moderate</option>
+<option value="85">Severe</option>
+</select>
+<label>Road accessibility</label>
+<select id="road">
+<option value="10">Good</option>
+<option value="45">Partially accessible</option>
+<option value="85">Poor / blocked</option>
+</select>
+<label>Terrain vulnerability</label>
+<select id="terrain">
+<option value="10">Low</option>
+<option value="45">Moderate</option>
+<option value="85">High</option>
+</select>
+<button onclick="analyze()">Analyze Sample Risk</button>
+<div id="analysisResult"></div>
+</div>
+
+<h2>03. Evidence & Source Transparency</h2>
+<div class="panel">
+<strong>What supports a risk alert?</strong>
+<div class="alert">🌧️ Weather forecasts — intended public weather data source</div>
+<div class="alert">🛰️ Satellite imagery — intended road and settlement mapping source</div>
+<div class="alert">📍 Field reports — intended anonymized observer submissions</div>
+<div class="alert">📘 INEC guidelines — intended official procedural reference</div>
+<p class="muted">These are proposed evidence sources, not connected feeds. Each real alert must include its source, collection time, confidence, limitations and verification status.</p>
+</div>
+
+<h2>04. Observer Incident Reporting</h2>
+<div class="panel">
+<label>Language</label>
+<select id="reportLang">
 <option>English</option>
 <option>Hausa</option>
 <option>Pidgin</option>
 </select>
 <label>Ward identifier</label>
-<input id="ward" placeholder="e.g. Ward A">
+<input id="ward" placeholder="Enter sample ward">
 <label>Incident category</label>
-<select id="category">
+<select id="incident">
 <option>Road accessibility</option>
 <option>Flooding</option>
 <option>Weather disruption</option>
 <option>Material delivery delay</option>
 <option>Other operational issue</option>
 </select>
-<label>Incident description</label>
-<textarea id="description" rows="3" placeholder="Describe the observed incident..."></textarea>
-<button onclick="submitReport()">Submit Demo Report</button>
-<div id="reportResult" class="result"></div>
-<p class="small">Prototype only. Reports are processed locally in this browser and are not sent to an observer network.</p>
+<label>Description</label>
+<textarea id="description" rows="3" placeholder="Describe the incident without personal voter information"></textarea>
+<button onclick="report()">Submit Sample Report</button>
+<div id="reportResult"></div>
 </div>
 
-<h2>04 / INEC Procedure Assistant</h2>
+<h2>05. INEC Procedure Assistant</h2>
 <div class="panel">
-<p class="small">Explore the human-review workflow.</p>
-<label>Select an operational issue</label>
+<p class="muted">Choose an incident to see the proposed verification workflow.</p>
 <select id="procedure">
 <option value="road">Polling-unit access disruption</option>
-<option value="weather">Severe weather concern</option>
+<option value="weather">Severe weather</option>
 <option value="materials">Election materials delay</option>
-<option value="incident">Observer incident report</option>
+<option value="observer">Observer incident</option>
 </select>
-<button onclick="showProcedure()">Review Guidance</button>
-<div id="procedureResult" class="result"></div>
-<p class="small">This demonstration does not retrieve or verify exact INEC legal clauses. Actual deployment must cite the applicable official guideline and section.</p>
+<button onclick="guidance()">Check Procedure</button>
+<div id="guidanceResult"></div>
+<p class="muted">No exact legal clause is claimed here. Deployment requires retrieval of the relevant official INEC document, exact section and source link.</p>
 </div>
 
-<h2>05 / Responsible AI & Human Oversight</h2>
+<h2>06. Responsible AI & Human Oversight</h2>
 <div class="grid">
-<div class="card"><strong>Explainability</strong><p class="small">Every risk flag should show its evidence and limitations.</p></div>
-<div class="card"><strong>Privacy</strong><p class="small">Minimise personal information and anonymise observer reports.</p></div>
-<div class="card"><strong>Human review</strong><p class="small">No alert becomes an operational decision without human confirmation.</p></div>
-<div class="card"><strong>Nonpartisanship</strong><p class="small">No candidate scoring, voter profiling or political persuasion.</p></div>
+<div class="card"><strong>Explainable AI</strong><p class="muted">Show why a risk alert was generated.</p></div>
+<div class="card"><strong>Data privacy</strong><p class="muted">Minimise personal data and protect observers.</p></div>
+<div class="card"><strong>Human control</strong><p class="muted">Every alert remains pending until verified.</p></div>
+<div class="card"><strong>Nonpartisan</strong><p class="muted">No voter profiling or candidate preference analysis.</p></div>
+</div>
+
+<h2>07. Development Roadmap</h2>
+<div class="panel">
+<p>✓ Interactive prototype dashboard</p>
+<p>✓ Sample risk-scoring calculator</p>
+<p>✓ Demonstration reporting workflow</p>
+<p>○ Connect authorised public weather data</p>
+<p>○ Integrate real geospatial datasets</p>
+<p>○ Build verified INEC document retrieval</p>
+<p>○ Test multilingual NLP and human review</p>
 </div>
 </main>
 
 <footer>
 <strong>ElectraPulse AI</strong><br>
-Early Warning • Operational Intelligence • Responsible AI<br>
 Built for the #AI4Elections Hackathon<br>
+Early Warning • Operational Intelligence • Responsible AI<br>
 © 2026 ElectraPulse AI
 </footer>
 
 <script>
-function submitReport(){
-const ward=document.getElementById('ward').value.trim();
-const category=document.getElementById('category').value;
-const description=document.getElementById('description').value.trim();
-const language=document.getElementById('language').value;
-if(!ward||!description){
-document.getElementById('reportResult').textContent="Please enter a ward and incident description.";
+function analyze(){
+let r=Number(document.getElementById('rain').value);
+let a=Number(document.getElementById('road').value);
+let t=Number(document.getElementById('terrain').value);
+let score=Math.round(r*.4+a*.4+t*.2);
+let level=score>=65?"HIGH":score>=35?"MEDIUM":"LOW";
+let confidence="Not measured — demonstration score only";
+document.getElementById('analysisResult').innerHTML=
+'<div class="result"><strong>Illustrative risk score: '+score+'/100</strong>'+
+'<div class="bar"><div class="fill" id="fill"></div></div>'+
+'<strong>Risk category: '+level+'</strong><br>'+
+'Confidence: '+confidence+'<br>'+
+'Evidence: User-entered synthetic rainfall, road and terrain values.<br>'+
+'Status: <strong>Pending Human Review</strong><br>'+
+'Limitation: This is a rule-based demonstration, not a trained or validated AI model.</div>';
+document.getElementById('fill').style.width=score+'%';
+}
+function report(){
+let w=document.getElementById('ward').value.trim();
+let d=document.getElementById('description').value.trim();
+if(!w||!d){
+document.getElementById('reportResult').innerHTML='<div class="result">Please enter a ward and description.</div>';
 return;
 }
 document.getElementById('reportResult').innerHTML=
-"✓ Demo report received locally.<br>Language: "+language+
-"<br>Ward: "+ward+"<br>Category: "+category+
-"<br>Status: <strong>Pending Human Review</strong>";
+'<div class="result">✓ Sample report received locally.<br>Ward: '+safe(w)+
+'<br>Language: '+safe(document.getElementById('reportLang').value)+
+'<br>Category: '+safe(document.getElementById('incident').value)+
+'<br>Status: Pending Human Review.<br>This report is not transmitted or saved to a server.</div>';
 }
-function showProcedure(){
-const p=document.getElementById('procedure').value;
-const guidance={
-road:"Check the relevant official INEC election logistics and polling-unit access guidance. Obtain independent field confirmation. Status: Pending Human Review.",
-weather:"Consult official weather and emergency-management information. Assess operational implications with authorised human reviewers. Status: Pending Human Review.",
-materials:"Check applicable official INEC procedures for election material distribution and escalation. Do not assume a delay without confirmation. Status: Pending Human Review.",
-incident:"Preserve the report, verify its source, check supporting evidence and consult the applicable official INEC guideline. Status: Pending Human Review."
+function safe(s){
+return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function guidance(){
+let p=document.getElementById('procedure').value;
+let messages={
+road:"Identify the affected location, verify the access condition independently and consult applicable official INEC logistics guidance.",
+weather:"Check authoritative weather information, document the affected area and refer operational decisions to authorised human reviewers.",
+materials:"Verify the reported delay with authorised sources and consult applicable INEC distribution and escalation procedures.",
+observer:"Preserve the report, assess source reliability, remove unnecessary personal information and seek independent confirmation."
 };
-document.getElementById('procedureResult').textContent=guidance[p];
+document.getElementById('guidanceResult').innerHTML='<div class="result">'+messages[p]+'<br><strong>Status: Pending Human Review</strong></div>';
+}
+function translatePage(){
+let l=document.getElementById('lang').value;
+let content={
+en:["Election Operations Intelligence","Early warning. Better preparation. Safer and more informed election operations."],
+ha:["Hankalin Ayyukan Zabe","Gargadi da wuri. Shiri mai kyau. Ingantattun ayyukan zabe."],
+pg:["Election Operations Intelligence","Early warning. Better preparation. Make election operations safer."]
+};
+document.getElementById('heading').textContent=content[l][0];
+document.getElementById('intro').textContent=content[l][1];
 }
 </script>
 </body>
